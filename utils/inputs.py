@@ -4,17 +4,20 @@ import datetime
 import os
 import requests
 
+import numpy as np
+
 # cookies for url requests, read in from the cookies.txt file
 # put your plaintext url request cookies there
 cookies = {}
-with open("cookies.txt", "r", encoding="utf-8") as file:
+PATH_COOKIES_TXT = os.path.join(os.path.dirname(__file__), "cookies.txt")
+with open(PATH_COOKIES_TXT, "r", encoding="utf-8") as file:
     cookies["session"] = file.read().strip()
 
 # file path of the 'inputs' folder for .txt files
 FOLDER_INPUTS = os.path.join(os.path.dirname(os.path.dirname(__file__)), "inputs")
 
 
-def get_input(day=None):
+def get_input(day: int = None) -> str:
     """Get the input for the given date"""
     if day is None:
         date = datetime.datetime.now()
@@ -44,19 +47,71 @@ def get_input(day=None):
     return s.strip()
 
 
-def split(s, line_char="\n", block_char="\n\n"):
-    """Split into lines of input, or possibly into blocks of lines of input"""
-    out = [block.split(line_char) for block in s.strip().split(block_char)]
-    if len(out) == 1:
-        return out[0]
-    return out
+def split(s: str, char: str) -> str:
+    """Split string into chunks based on a character"""
+    return s.strip().split(char)
 
 
-def get_int(string):
-    """Assuming a string contains a single integer, retrieve that int"""
-    chars = set(list("1234567890"))
+def split_newline(s: str) -> list:
+    """Split on newline characters"""
+    return split(s, "\n")
+
+
+def split_lax(s: str) -> list:
+    """Split string based on common splitting characters: newline, tab, or one or more spaces"""
+    # standardize to spaces
+    s = s.replace("\n", " ")
+    s = s.replace("\t", " ")
+
+    # replace all multi-space character groups with single spaces
+    n = len(s) + 1
+    while len(s) < n:
+        n = len(s)
+        s = s.replace("  ", " ")
+
+    # split on (single) spaces
+    return split(s, " ")
+
+
+def list_map(function: callable, iterable: iter, *iterables, **kwargs) -> list:
+    """map() but it returns a list instead of an iterable"""
+    return list(map(function, iterable, *iterables, **kwargs))
+
+
+def list_reshape(array: list, shape: tuple) -> list:
+    """Reshape a list like a numpy array, and return "listy" things"""
+    return np.array(array).reshape(shape).tolist()
+
+
+CHARS_INT = set(list("1234567890"))
+
+
+def get_int(s: str) -> int:
+    """Attempts to return the first int in a string"""
     n = ""
-    for char in string:
-        if char in chars:
+    started = False
+    for char in s:
+        if char in CHARS_INT:
+            started = True
             n = n + char
+        else:
+            if started:
+                break
     return int(n)
+
+
+CHARS_FLOAT = set(list("1234567890."))
+
+
+def get_float(s: str) -> float:
+    """Attempts to return the first float in a string"""
+    n = ""
+    started = False
+    for char in s:
+        if char in CHARS_FLOAT:
+            started = True
+            n = n + char
+        else:
+            if started:
+                break
+    return float(n)
