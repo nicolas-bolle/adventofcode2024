@@ -73,9 +73,18 @@ def split_lax(s: str) -> list:
     return split(s, " ")
 
 
-def list_map(function: callable, iterable: iter, *iterables, **kwargs) -> list:
-    """map() but it returns a list instead of an iterable"""
-    return list(map(function, iterable, *iterables, **kwargs))
+def list_map(function: callable, iterable: list, level: int = 1) -> list:
+    """Basically map() but it takes a list and returns a list
+    Option to specify the level to map at
+    """
+    assert level == int(level) and level >= 1
+
+    # base case (just map())
+    if level == 1:
+        return list(map(function, iterable))
+
+    # recursive step
+    return [list_map(function, _iterable, level=level - 1) for _iterable in iterable]
 
 
 def list_reshape(array: list, shape: tuple) -> list:
