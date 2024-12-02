@@ -2,7 +2,7 @@
 """Day 0"""
 
 
-# pylint: disable=unused-import, invalid-name
+# pylint: disable=unused-import, invalid-name, redefined-outer-name
 
 from abc import ABC, abstractmethod
 from functools import lru_cache
@@ -38,8 +38,9 @@ def solution_part2(s: str):
     return soln
 
 
-if __name__ == "main":
+if __name__ == "__main__":
     s = get_input(DAY)
+    print()
     soln1 = solution_part1(s)
     print("Part 1 solution:")
     print(soln1)
