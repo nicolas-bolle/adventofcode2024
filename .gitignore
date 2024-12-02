@@ -7,6 +7,9 @@ cookies.txt
 # scratchwork notebook
 scratchwork.ipynb
 
+# venv
+/venv_adventofcode2024
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
