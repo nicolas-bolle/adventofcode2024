@@ -1,5 +1,4 @@
-# FIXME template for solution files
-"""Day 0 FIXME"""
+"""Day 3"""
 
 
 # pylint: disable=unused-import, invalid-name, redefined-outer-name
@@ -23,19 +22,39 @@ from utils.inputs import (
     get_float,
 )
 
-DAY = 0  # FIXME
+DAY = 3
 
 
 def solution_part1(s: str):
     """Part 1 solution from the plaintext input"""
-    soln = "TODO"
-    return soln
+    expr = r"mul\(([0-9]+),([0-9]+)\)"
+    res = re.findall(expr, s)
+
+    c = 0
+    for a, b in res:
+        c = c + int(a) * int(b)
+
+    return c
 
 
 def solution_part2(s: str):
     """Part 2 solution from the plaintext input"""
-    soln = "TODO"
-    return soln
+    expr = r"mul\(([0-9]+),([0-9]+)\)|(do\(\))|(don't\(\))"
+    res = re.findall(expr, s)
+
+    c = 0
+    enabled = True
+    for a, b, _do, _dont in res:
+        if _do:
+            enabled = True
+            continue
+        if _dont:
+            enabled = False
+            continue
+        if enabled:
+            c = c + int(a) * int(b)
+
+    return c
 
 
 if __name__ == "__main__":
