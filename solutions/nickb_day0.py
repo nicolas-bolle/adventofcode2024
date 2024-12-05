@@ -9,6 +9,7 @@ from functools import lru_cache
 
 import re
 from collections import deque
+from frozendict import frozendict
 import numpy as np
 import pandas as pd
 
