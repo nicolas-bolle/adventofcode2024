@@ -8,7 +8,8 @@ from abc import ABC, abstractmethod
 from functools import lru_cache
 
 import re
-from collections import deque
+import itertools
+from collections import deque, defaultdict
 from frozendict import frozendict
 import numpy as np
 import pandas as pd
