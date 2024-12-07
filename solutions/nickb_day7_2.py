@@ -3,13 +3,11 @@
 Faster solution (4 seconds) doing it recursively with pruning
 """
 
-
 # pylint: disable=invalid-name, redefined-outer-name
 
 from collections import deque
 
 from utils.inputs import get_input
-
 
 DAY = 7
 

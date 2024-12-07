@@ -1,6 +1,5 @@
 """Day 2"""
 
-
 # pylint: disable=invalid-name, redefined-outer-name
 
 import numpy as np

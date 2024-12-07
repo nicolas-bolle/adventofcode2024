@@ -1,7 +1,6 @@
 # FIXME template for solution files
 """Day 0 FIXME"""
 
-
 # pylint: disable=invalid-name, redefined-outer-name
 
 from abc import ABC, abstractmethod

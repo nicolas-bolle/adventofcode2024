@@ -1,6 +1,5 @@
 """Day 3"""
 
-
 # pylint: disable=invalid-name, redefined-outer-name
 
 import re

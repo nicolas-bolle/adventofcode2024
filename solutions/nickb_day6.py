@@ -1,11 +1,12 @@
 """Day 6
+
 Uses Lab class to manage the lab + guard + the steps they take
 
-Part 2 solution takes about 1 minutes
+Part 2 solution takes about 1 minute
 Maybe it's slow because I'm copying A_base every time and also python is slow?
-I did the main optimization of not checking irrelevant obstacle locations, so I think mainly the implementation (not the algorithm) is slow
+I did the main optimization of not checking irrelevant obstacle locations,
+    so I think mainly the implementation (not the algorithm) is slow
 """
-
 
 # pylint: disable=invalid-name, redefined-outer-name
 

@@ -17,7 +17,6 @@ This means the worst case ends up being 3**13 = 1_594_323 sets of operations for
 Which slows things down but doesn't make things infeasible
 """
 
-
 # pylint: disable=invalid-name, redefined-outer-name
 
 import itertools

@@ -1,4 +1,9 @@
 """Day 5
+
+I didn't realize comparison sorting works, so I manually coded up a sort which is nasty
+The benefit of this code is it works even if the relation on pages isn't total
+Ex. still works if 1 < 2 and 2 < 3 but there's no 1 vs 3 comparison
+
 Required a lot of helper functions
 The helper functions for part 1 aren't too weird
 But for part 2 I made reorder_printing() and digraph_longest_path_length() which are fancier
@@ -8,7 +13,6 @@ Viewing rules as directed edges on the graph of pages,
 And the longest path can be found by ordering the printing according to the
     length of the longest path from each page (in descending order)
 """
-
 
 # pylint: disable=invalid-name, redefined-outer-name
 
