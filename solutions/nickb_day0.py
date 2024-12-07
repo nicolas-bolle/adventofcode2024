@@ -4,7 +4,8 @@
 # pylint: disable=invalid-name, redefined-outer-name
 
 from abc import ABC, abstractmethod
-from functools import lru_cache
+from typing import Self
+from functools import lru_cache, total_ordering
 
 import re
 import itertools

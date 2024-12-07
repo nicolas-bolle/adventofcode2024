@@ -1,8 +1,8 @@
 """Day 5
 
 I didn't realize comparison sorting works, so I manually coded up a sort which is nasty
-The benefit of this code is it works even if the relation on pages isn't total
-Ex. still works if 1 < 2 and 2 < 3 but there's no 1 vs 3 comparison
+I built my code to handle cases where the problem's specified relation on pages isn't total
+But I don't think that's actually prohibitive when using the right comparison
 
 Required a lot of helper functions
 The helper functions for part 1 aren't too weird
