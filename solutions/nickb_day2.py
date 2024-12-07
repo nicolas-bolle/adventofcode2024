@@ -1,41 +1,30 @@
 """Day 2"""
 
 
-# pylint: disable=unused-import, invalid-name, redefined-outer-name
+# pylint: disable=invalid-name, redefined-outer-name
 
-from abc import ABC, abstractmethod
-from functools import lru_cache
-
-import re
-from collections import deque
 import numpy as np
-import pandas as pd
 
-from utils.inputs import (
-    get_input,
-    split,
-    split_newline,
-    split_lax,
-    list_map,
-    list_reshape,
-    get_int,
-    get_float,
-)
+from utils.inputs import get_input
 
 DAY = 2
 
 
-def solution_part1(s: str):
+def parse_line(line):
+    return [int(x) for x in line.split()]
+
+
+def solution_part1(s: str) -> int:
     """Part 1 solution from the plaintext input"""
-    p = list_map(get_int, list_map(split_lax, split_newline(s)), level=2)
-    soln = sum(list_map(is_safe, p))
+    p = [parse_line(line) for line in s.strip().split("\n")]
+    soln = sum(is_safe(line) for line in p)
     return soln
 
 
-def solution_part2(s: str):
+def solution_part2(s: str) -> int:
     """Part 2 solution from the plaintext input"""
-    p = list_map(get_int, list_map(split_lax, split_newline(s)), level=2)
-    soln = sum(list_map(is_safe_dampened, p))
+    p = [parse_line(line) for line in s.strip().split("\n")]
+    soln = sum(is_safe_dampened(line) for line in p)
     return soln
 
 
@@ -49,7 +38,7 @@ def is_safe(row):
 
 
 def is_safe_dampened(row):
-    return any([is_safe(row[:i] + row[i + 1 :]) for i in range(len(row))])
+    return any(is_safe(row[:i] + row[i + 1 :]) for i in range(len(row)))
 
 
 if __name__ == "__main__":

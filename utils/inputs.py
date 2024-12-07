@@ -1,10 +1,15 @@
 """Misc utils for getting and parsing input files"""
 
+# pylint: disable=logging-fstring-interpolation
+
+import logging
 import datetime
 import os
 import requests
 
 import numpy as np
+
+logger = logging.getLogger(__name__)
 
 # cookies for url requests, read in from the cookies.txt file
 # put your plaintext url request cookies there
@@ -31,18 +36,18 @@ def get_input(day: int = None) -> str:
 
     # if .txt file of input doesn't exist, download from the website
     if not os.path.exists(file_path):
-        print("Retrieving from website")
+        logger.debug("Retrieving from website")
         url = f"https://adventofcode.com/2024/day/{day}/input"
         s = requests.get(url, cookies=cookies, headers={}, timeout=10).text
-        print(file_path)
+        logger.debug(f"{file_path=}")
         with open(file_path, "w", encoding="utf-8") as file:
             file.write(s)
-        print(f"Wrote to {file_path}")
+        logger.debug(f"Wrote to {file_path}")
 
     # read the input from the .txt file
     with open(file_path, "r", encoding="utf-8") as file:
         s = file.read()
-    print(f"Retrieved from {file_path}")
+    logger.debug(f"Retrieved from {file_path}")
 
     return s.strip()
 

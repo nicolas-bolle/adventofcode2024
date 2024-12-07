@@ -1,36 +1,21 @@
 """Day 4"""
 
 
-# pylint: disable=unused-import, invalid-name, redefined-outer-name
+# pylint: disable=invalid-name, redefined-outer-name
 
-from abc import ABC, abstractmethod
-from functools import lru_cache
-
-import re
-from collections import deque
 import numpy as np
-import pandas as pd
 
-from utils.inputs import (
-    get_input,
-    split,
-    split_newline,
-    split_lax,
-    list_map,
-    list_reshape,
-    get_int,
-    get_float,
-)
+from utils.inputs import get_input
 
 DAY = 4
 
 
-def solution_part1(s: str):
+def solution_part1(s: str) -> int:
     """Part 1 solution from the plaintext input
     I manually coded in the 8 relative positions (horizontal, vertical, diagonal) that an 'XMAS' could appear in
     The code (inefficiently) loops through all shifts of these to look for 'XMAS'es
     """
-    A = np.array(list_map(list, split_newline(s)))
+    A = np.array([list(line) for line in s.strip().split("\n")])
 
     c = 0
 
@@ -68,12 +53,12 @@ def solution_part1(s: str):
     return c
 
 
-def solution_part2(s: str):
+def solution_part2(s: str) -> int:
     """Part 2 solution from the plaintext input
     For this part we just need one "pattern", and we can match it to 4 'X-MAS'es
     The 4 correspond to the 4 rotations of the X
     """
-    A = np.array(list_map(list, split_newline(s)))
+    A = np.array([list(line) for line in s.strip().split("\n")])
 
     c = 0
 

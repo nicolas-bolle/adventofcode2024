@@ -18,28 +18,11 @@ Which slows things down but doesn't make things infeasible
 """
 
 
-# pylint: disable=unused-import, invalid-name, redefined-outer-name
+# pylint: disable=invalid-name, redefined-outer-name
 
-from abc import ABC, abstractmethod
-from functools import lru_cache
-
-import re
 import itertools
-from collections import deque, defaultdict
-from frozendict import frozendict
-import numpy as np
-import pandas as pd
 
-from utils.inputs import (
-    get_input,
-    split,
-    split_newline,
-    split_lax,
-    list_map,
-    list_reshape,
-    get_int,
-    get_float,
-)
+from utils.inputs import get_input
 
 DAY = 7
 
@@ -63,7 +46,7 @@ def solve_line(line, valid_ops):
     return False
 
 
-def check_math(numbers, ops, target):
+def check_math(numbers, ops, target) -> int:
     """Check if the math works out for a set of operations"""
     val = numbers[0]
     for n, op in zip(numbers[1:], ops):

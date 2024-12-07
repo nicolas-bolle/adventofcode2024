@@ -3,31 +3,15 @@ Uses Lab class to manage the lab + guard + the steps they take
 
 Part 2 solution takes about 1 minutes
 Maybe it's slow because I'm copying A_base every time and also python is slow?
-Since I did the main optimization of not checking irrelevant obstacle locations
+I did the main optimization of not checking irrelevant obstacle locations, so I think mainly the implementation (not the algorithm) is slow
 """
 
 
-# pylint: disable=unused-import, invalid-name, redefined-outer-name
+# pylint: disable=invalid-name, redefined-outer-name
 
-from abc import ABC, abstractmethod
-from functools import lru_cache
-
-import re
-from collections import deque
-from frozendict import frozendict
 import numpy as np
-import pandas as pd
 
-from utils.inputs import (
-    get_input,
-    split,
-    split_newline,
-    split_lax,
-    list_map,
-    list_reshape,
-    get_int,
-    get_float,
-)
+from utils.inputs import get_input
 
 DAY = 6
 
@@ -145,19 +129,19 @@ class Lab:
         return int((self.A == self.MARKER_VISITED).sum())
 
 
-def solution_part1(s: str):
+def solution_part1(s: str) -> int:
     """Part 1 solution from the plaintext input"""
-    A = np.array(list(map(list, s.strip().split("\n"))))
+    A = np.array([list(line) for line in s.strip().split("\n")])
     lab = Lab(A)
     lab.step_until_exit()
     c = lab.count_guard_locs_visited()
     return c
 
 
-def solution_part2(s: str):
+def solution_part2(s: str) -> int:
     """Part 2 solution from the plaintext input"""
     # first have the guard explore the lab, since it's only worth placing obstacles where they walk
-    A_base = np.array(list(map(list, s.strip().split("\n"))))
+    A_base = np.array([list(line) for line in s.strip().split("\n")])
     A = A_base.copy()
     lab_base = Lab(A)
     lab_base.step_until_exit()

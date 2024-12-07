@@ -1,45 +1,31 @@
 """Day 1"""
 
 
-# pylint: disable=unused-import, invalid-name, redefined-outer-name
+# pylint: disable=invalid-name, redefined-outer-name
 
-from abc import ABC, abstractmethod
-from functools import lru_cache
-
-import re
-from collections import deque
 import numpy as np
 import pandas as pd
 
-from utils.inputs import (
-    get_input,
-    split,
-    split_newline,
-    split_lax,
-    list_map,
-    list_reshape,
-    get_int,
-    get_float,
-)
+from utils.inputs import get_input
 
 DAY = 1
 
 
-def solution_part1(s: str):
+def solution_part1(s: str) -> int:
     """Part 1 solution from the plaintext input"""
-    aux = np.array(list_map(get_int, split_lax(s))).reshape(-1, 2)
-    l1 = sorted(aux[:, 0])
-    l2 = sorted(aux[:, 1])
+    array = np.array(list(map(int, s.strip().split()))).reshape(-1, 2)
+    l1 = sorted(array[:, 0])
+    l2 = sorted(array[:, 1])
     soln = sum(abs(np.array(l1) - np.array(l2)))
     return soln
 
 
-def solution_part2(s: str):
+def solution_part2(s: str) -> int:
     """Part 2 solution from the plaintext input"""
-    aux = np.array(list_map(get_int, split_lax(s))).reshape(-1, 2)
+    array = np.array(list(map(int, s.strip().split()))).reshape(-1, 2)
 
-    l1 = list(aux[:, 0])
-    l2 = list(aux[:, 1])
+    l1 = list(array[:, 0])
+    l2 = list(array[:, 1])
 
     l1_counts = pd.Series(l1).value_counts()
     l2_counts = pd.Series(l2).value_counts()

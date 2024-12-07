@@ -10,27 +10,14 @@ And the longest path can be found by ordering the printing according to the
 """
 
 
-# pylint: disable=unused-import, invalid-name, redefined-outer-name
+# pylint: disable=invalid-name, redefined-outer-name
 
-from abc import ABC, abstractmethod
 from functools import lru_cache
 
-import re
-from collections import deque
 from frozendict import frozendict
-import numpy as np
 import pandas as pd
 
-from utils.inputs import (
-    get_input,
-    split,
-    split_newline,
-    split_lax,
-    list_map,
-    list_reshape,
-    get_int,
-    get_float,
-)
+from utils.inputs import get_input
 
 DAY = 5
 
@@ -116,14 +103,14 @@ def digraph_longest_path_length(page: int, rules_dict: frozendict, printing_tupl
     )
 
 
-def solution_part1(s: str):
+def solution_part1(s: str) -> int:
     """Part 1 solution from the plaintext input"""
     # parse into rules and printings
     # rules: set of tuples (a, b) for the rules
     # printings: list of lists [a, b, c, ...] for the printings
-    rules, printings = tuple(split(s, "\n\n"))
-    rules = set(list_map(parse_rule, split_newline(rules)))
-    printings = list_map(parse_printing, split_newline(printings))
+    rules, printings = tuple(s.strip().split("\n\n"))
+    rules = {parse_rule(line) for line in rules.split("\n")}
+    printings = [parse_printing(line) for line in printings.split("\n")]
 
     # count up the sum of middle pages in valid printings
     c = 0
@@ -135,11 +122,11 @@ def solution_part1(s: str):
     return c
 
 
-def solution_part2(s: str):
+def solution_part2(s: str) -> int:
     """Part 2 solution from the plaintext input"""
-    rules, printings = tuple(split(s, "\n\n"))
-    rules = set(list_map(parse_rule, split_newline(rules)))
-    printings = list_map(parse_printing, split_newline(printings))
+    rules, printings = tuple(s.strip().split("\n\n"))
+    rules = {parse_rule(line) for line in rules.split("\n")}
+    printings = [parse_printing(line) for line in printings.split("\n")]
 
     # count up the sum of middle pages in reordered invalid printings
     c = 0

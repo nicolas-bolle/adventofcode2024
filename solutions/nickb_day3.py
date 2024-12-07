@@ -1,31 +1,16 @@
 """Day 3"""
 
 
-# pylint: disable=unused-import, invalid-name, redefined-outer-name
-
-from abc import ABC, abstractmethod
-from functools import lru_cache
+# pylint: disable=invalid-name, redefined-outer-name
 
 import re
-from collections import deque
-import numpy as np
-import pandas as pd
 
-from utils.inputs import (
-    get_input,
-    split,
-    split_newline,
-    split_lax,
-    list_map,
-    list_reshape,
-    get_int,
-    get_float,
-)
+from utils.inputs import get_input
 
 DAY = 3
 
 
-def solution_part1(s: str):
+def solution_part1(s: str) -> int:
     """Part 1 solution from the plaintext input"""
     expr = r"mul\(([0-9]+),([0-9]+)\)"
     res = re.findall(expr, s)
@@ -37,7 +22,7 @@ def solution_part1(s: str):
     return c
 
 
-def solution_part2(s: str):
+def solution_part2(s: str) -> int:
     """Part 2 solution from the plaintext input"""
     expr = r"mul\(([0-9]+),([0-9]+)\)|(do\(\))|(don't\(\))"
     res = re.findall(expr, s)
