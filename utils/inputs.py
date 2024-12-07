@@ -1,4 +1,13 @@
-"""Misc utils for getting and parsing input files"""
+"""Util for getting input files
+
+To get this working:
+- Log into your Advent of Code account
+- Visit a url like https://adventofcode.com/2024/day/1/input
+- Use browser Inspect to view the cookies sent with your url request
+    - Something like "_ga=GA..."
+- Create a file cookies.txt in the same directory as inputs.py
+- Add the (plaintext) cookies to the file
+"""
 
 # pylint: disable=logging-fstring-interpolation
 
@@ -6,8 +15,6 @@ import logging
 import datetime
 import os
 import requests
-
-import numpy as np
 
 logger = logging.getLogger(__name__)
 
@@ -50,82 +57,3 @@ def get_input(day: int = None) -> str:
     logger.debug(f"Retrieved from {file_path}")
 
     return s.strip()
-
-
-def split(s: str, char: str) -> str:
-    """Split string into chunks based on a character"""
-    return s.strip().split(char)
-
-
-def split_newline(s: str) -> list:
-    """Split on newline characters"""
-    return split(s, "\n")
-
-
-def split_lax(s: str) -> list:
-    """Split string based on common splitting characters: newline, tab, or one or more spaces"""
-    # standardize to spaces
-    s = s.replace("\n", " ")
-    s = s.replace("\t", " ")
-
-    # replace all multi-space character groups with single spaces
-    n = len(s) + 1
-    while len(s) < n:
-        n = len(s)
-        s = s.replace("  ", " ")
-
-    # split on (single) spaces
-    return split(s, " ")
-
-
-def list_map(function: callable, iterable: list, level: int = 1) -> list:
-    """Basically map() but it takes a list and returns a list
-    Option to specify the level to map at
-    """
-    assert level == int(level) and level >= 1
-
-    # base case (just map())
-    if level == 1:
-        return list(map(function, iterable))
-
-    # recursive step
-    return [list_map(function, _iterable, level=level - 1) for _iterable in iterable]
-
-
-def list_reshape(array: list, shape: tuple) -> list:
-    """Reshape a list like a numpy array, and return "listy" things"""
-    return np.array(array).reshape(shape).tolist()
-
-
-CHARS_INT = set(list("1234567890"))
-
-
-def get_int(s: str) -> int:
-    """Attempts to return the first int in a string"""
-    n = ""
-    started = False
-    for char in s:
-        if char in CHARS_INT:
-            started = True
-            n = n + char
-        else:
-            if started:
-                break
-    return int(n)
-
-
-CHARS_FLOAT = set(list("1234567890."))
-
-
-def get_float(s: str) -> float:
-    """Attempts to return the first float in a string"""
-    n = ""
-    started = False
-    for char in s:
-        if char in CHARS_FLOAT:
-            started = True
-            n = n + char
-        else:
-            if started:
-                break
-    return float(n)
