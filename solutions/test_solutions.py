@@ -27,8 +27,10 @@ CONFIG = [
     (2, "nickb_day2.py"),
     (3, "nickb_day3.py"),
     (4, "nickb_day4.py"),
-    (5, "nickb_day5.py"),
-    (6, "nickb_day6.py"),
+    # (5, "nickb_day5.py"),
+    (5, "nickb_day5_2.py"),
+    # (6, "nickb_day6.py"),
+    (6, "nickb_day6_2.py"),
     # (7, "nickb_day7.py"),
     (7, "nickb_day7_2.py"),
 ]

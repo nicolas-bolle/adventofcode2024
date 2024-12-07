@@ -8,7 +8,6 @@ Use Page objects to implement comparison sorting for part 2
 
 # pylint: disable=invalid-name, redefined-outer-name
 
-# TODO standardize these imports
 from typing import Self
 from functools import total_ordering
 
