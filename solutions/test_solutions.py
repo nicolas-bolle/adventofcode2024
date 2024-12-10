@@ -34,7 +34,8 @@ CONFIG = [
     # (7, "nickb_day7.py"),
     (7, "nickb_day7_2.py"),
     (8, "nickb_day8.py"),
-    (9, "nickb_day9.py"),
+    # (9, "nickb_day9.py"),
+    (9, "nickb_day9_2.py"),
 ]
 
 # add current path to system path to simplify module imports
