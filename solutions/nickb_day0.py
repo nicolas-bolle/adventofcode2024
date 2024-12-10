@@ -16,6 +16,7 @@ import numpy as np
 import pandas as pd
 
 from utils.inputs import get_input
+from utils.utilities import BinaryList
 
 DAY = 0  # FIXME
 
