@@ -146,4 +146,8 @@ def test_solution(day, file_name) -> bool:
 
 
 if __name__ == "__main__":
-    test_all()
+    all_correct_bool = test_all()
+    if all_correct_bool:
+        print("All correct!")
+    else:
+        print("Some incorrect!")

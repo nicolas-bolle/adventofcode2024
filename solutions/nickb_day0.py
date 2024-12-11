@@ -5,7 +5,7 @@
 
 from abc import ABC, abstractmethod
 from typing import Self
-from functools import lru_cache, total_ordering
+from functools import cache, lru_cache, total_ordering
 
 import re
 import itertools

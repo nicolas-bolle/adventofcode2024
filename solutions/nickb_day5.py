@@ -16,7 +16,7 @@ And the longest path can be found by ordering the printing according to the
 
 # pylint: disable=invalid-name, redefined-outer-name
 
-from functools import lru_cache
+from functools import cache
 
 from frozendict import frozendict
 import pandas as pd
@@ -87,7 +87,7 @@ def reorder_printing(printing: list[int], rules: set[tuple[int, int]]) -> list[i
     return list(series.index)
 
 
-@lru_cache
+@cache
 def digraph_longest_path_length(page: int, rules_dict: frozendict, printing_tuple):
     """Find the length of the longest path starting at the given page under the rule set
     Works recursively, caching since otherwise the speed would be horrible

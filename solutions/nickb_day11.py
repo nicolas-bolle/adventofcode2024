@@ -2,13 +2,13 @@
 
 Order of the stones doesn't matter, so we can use a dictionary to keep track of them
 That way we can "step" every stone with the same number all at once
-lru_cache for good measure but it's not necessary
+cache for good measure but it's not necessary
 """
 
 # pylint: disable=invalid-name, redefined-outer-name
 
 from collections import defaultdict
-from functools import lru_cache
+from functools import cache
 from utils.inputs import get_input
 
 DAY = 11
@@ -24,7 +24,7 @@ def step_stones_dict(stones_dict: dict) -> dict:
     return new_stones_dict
 
 
-@lru_cache
+@cache
 def step_stone(stone: int) -> list[int]:
     """Return the result of a step on a single stone"""
     if stone == 0:

@@ -1,12 +1,12 @@
 """Day 10
 
 Part 2 was a dynamic programming kind of thing
-lru_cache made coding it up straightforward as a recursive kind of thing
+cache made coding it up straightforward as a recursive kind of thing
 """
 
 # pylint: disable=invalid-name, redefined-outer-name
 
-from functools import lru_cache
+from functools import cache
 import numpy as np
 from utils.inputs import get_input
 
@@ -27,7 +27,7 @@ def spread(A: np.ndarray, h: int, locs: set[tuple[int, int]]):
     return locs_new
 
 
-@lru_cache
+@cache
 def calc_rating(A: tuple[tuple], i: int, j: int):
     """For part 2
     The rating of location (i, j) in A
@@ -79,7 +79,7 @@ def solution_part2(s: str) -> int:
     A = np.array([list(map(int, line)) for line in s.strip().split("\n")])
     idx_zeros = [(int(i), int(j)) for i, j in zip(*np.where(A == 0))]
 
-    # hashable version of A so lru_cache is happy
+    # hashable version of A so @cache is happy
     A_hashable = tuple([tuple([int(x) for x in row]) for row in A])
 
     total_rating = 0
