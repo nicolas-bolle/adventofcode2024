@@ -41,6 +41,7 @@ CONFIG = [
     (12, "nickb_day12.py"),
     (13, "nickb_day13.py"),
     (14, "nickb_day14.py"),
+    (15, "nickb_day15.py"),
 ]
 
 # add current path to system path to simplify module imports
