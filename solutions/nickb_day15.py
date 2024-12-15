@@ -4,7 +4,7 @@ I really liked part 2
 The functions check_move() and make_move() do most of the work
 
 At first for part 1 I had a function attempt_move() which was basically check_move() + make_move()
-But for part 2 I needed to split those thins out separately
+But for part 2 I needed to split those things out separately
 Another important thing for part 2 was that when you move one half
     of a double box vertically you need to move the other half
 But making sure to avoid infinite recursion when doing that
