@@ -14,6 +14,7 @@ from frozendict import frozendict
 import math
 import numpy as np
 import pandas as pd
+import networkx as nx
 
 from utils.inputs import get_input
 from utils.utilities import BinaryList
