@@ -34,7 +34,7 @@ DAY = 17
 
 
 class Computer:
-    """A computer istance, intialized from the A, B, C, and program values
+    """A computer instance, intialized from the A, B, C, and program values
     Can .run() the program and report the out_list
     """
 
@@ -134,7 +134,7 @@ class Computer:
         return operand
 
     def combo_operand(self, operand: int) -> int:
-        """Get the combo operand correspnding to 'operand'"""
+        """Get the combo operand corresponding to 'operand'"""
         match operand:
             case 0:
                 return 0
@@ -154,7 +154,6 @@ class Computer:
                 raise Exception("Encountered combo operand 7")
             case _:
                 raise Exception(f"Unrecognized combo operand {operand}")
-        return operand
 
 
 def parse_input(s: str) -> tuple[int, int, int, list[int]]:
@@ -163,9 +162,7 @@ def parse_input(s: str) -> tuple[int, int, int, list[int]]:
     A = digits[0]
     B = digits[1]
     C = digits[2]
-
     program = digits[3:]
-
     return A, B, C, program
 
 
@@ -199,9 +196,6 @@ def nums_to_nums(
     return list(reversed(c.out_list))
 
 
-# need to pick the 16 blocks for A
-# so for each position, try the values in range(8)
-# prune if a place doesn't line up like it should
 def search(
     A: int,
     B: int,
@@ -212,7 +206,6 @@ def search(
     i: int,
 ) -> Generator:
     """Search for the smallest A (in nums) that gives nums_actual == nums_target"""
-
     # base case
     if i == len(nums_target):
         yield nums
