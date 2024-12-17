@@ -4,20 +4,20 @@ Part 2 took a while, but I learned to make generators!
 
 I made an object for part 1 to keep things organized
 
-Part 2 took some time:
-- After a while time I realized what the part 1 and part 2 programs were doing
-    - A is the "timer" for when the program halts
+Part 2:
+- After a while I realized what the part 1 and part 2 programs were doing
+    - 'A' is the "timer" for when the program halts
     - Each run through the instructions prints one output
-    - The 'adv' instructions are just bit shifts of A
+    - The 'adv' instructions are just bit shifts of 'A'
     - Part 2 always bit shifted by 3
-    - Early outputs of the program can depend on a lot of bits of A
-    - Later outputs of the program only depend on the most significant bits of A
+    - Early outputs of the program can depend on a lot of bits of 'A'
+    - Later outputs of the program only depend on the most significant bits of 'A'
 - Given that, the solution was
-    - Think about A as a list of base 8 numbers
+    - Think about 'A' as a list of base 8 numbers
     - For each set of numbers, we can find the numbers the program outputs (see nums_to_nums())
-    - To find the A, iterate starting with the most significant digit of A
+    - To find the 'A', iterate starting with the most significant digit of 'A'
 
-One detail is that the most significant digit of A "matches up" with the final instruction and
+One detail is that the most significant digit of 'A' "matches up" with the final instruction and
     final output, so there's some reverses thrown in
 
 And using generators ('yield' and 'yield from') in the search() function made things pretty clean
