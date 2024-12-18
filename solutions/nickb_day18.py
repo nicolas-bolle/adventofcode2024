@@ -101,7 +101,6 @@ def solution_part2(s: str) -> int:
         bisect_wrapper, 1024, len(all_corrupted), args=(all_corrupted, n), xtol=0.2
     )
     num_of_fatal_corruption = int(np.round(root))
-    print(num_of_fatal_corruption)
 
     # the fatal corruption tuple
     fatal_tuple = all_corrupted[num_of_fatal_corruption - 1]
