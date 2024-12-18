@@ -112,7 +112,11 @@ def test_solution(day, file_name) -> bool:
         part_1_errored = True
     end = time.time()
     part_1_seconds = end - start
-    part_1_correct = bool(part_1_answer == part_1_soln)
+    if isinstance(part_1_soln, str):
+        # cast answer to string if the solution is a string
+        part_1_correct = bool(str(part_1_answer) == part_1_soln)
+    else:
+        part_1_correct = bool(part_1_answer == part_1_soln)
 
     # part 2
     start = time.time()
@@ -124,7 +128,11 @@ def test_solution(day, file_name) -> bool:
         part_2_errored = True
     end = time.time()
     part_2_seconds = end - start
-    part_2_correct = bool(part_2_answer == part_2_soln)
+    if isinstance(part_2_soln, str):
+        # cast answer to string if the solution is a string
+        part_2_correct = bool(str(part_2_answer) == part_2_soln)
+    else:
+        part_2_correct = bool(part_2_answer == part_2_soln)
 
     overall_correct = part_1_correct and part_2_correct
 

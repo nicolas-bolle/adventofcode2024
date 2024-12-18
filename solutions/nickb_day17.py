@@ -258,7 +258,7 @@ def solution_part2(s: str) -> int:
     # convert to an int
     A = nums_to_int(nums)
 
-    return str(A)
+    return A
 
 
 if __name__ == "__main__":
