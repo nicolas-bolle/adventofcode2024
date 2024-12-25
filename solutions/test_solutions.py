@@ -50,7 +50,7 @@ CONFIG = [
     (21, "nickb_day21.py"),
     (22, "nickb_day22.py"),
     (23, "nickb_day23.py"),
-    # (24, "nickb_day24.py"),
+    (24, "nickb_day24.py"),
     (25, "nickb_day25.py"),
 ]
 
